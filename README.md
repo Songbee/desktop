@@ -39,4 +39,5 @@ a Copyright wavier — see [CONTRIBUTING](CONTRIBUTING.md).
 [Deezer]: https://deezer.com/
 [Flattr]: https://flattr.com/
 [sabufaizu]: https://soundcloud.com/sabufaizu
+[Popcorn Time]: https://popcorntime.sh/
 [Unlicense]: http://unlicense.org/
