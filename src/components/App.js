@@ -1,27 +1,37 @@
-import {h} from "preact";
+import {h, Component} from "preact";
 import Router from "preact-router";
 
 import {AppHeader, AppSidebar, AppFooter} from "./chrome";
 import Home from "./views/Home";
 
-export default ({history}) => (
-  <div class="window">
-    <AppHeader />
+class App extends Component {
+  getChildContext() {
+    return { history: this.props.history };
+  }
 
-    <section class="window-content">
-      <div class="pane-group">
-        <div class="pane-sm sidebar">
-          <AppSidebar />
-        </div>
-        <div class="pane">
-          <Router history={history}>
-            <Home path="/" name="Home" />
-            <Home path="/memes" name="Memes" />
-          </Router>
-        </div>
+  render({history, ...props}) {
+    return (
+      <div class="window">
+        <AppHeader />
+
+        <section class="window-content">
+          <div class="pane-group">
+            <div class="pane-sm sidebar">
+              <AppSidebar />
+            </div>
+            <div class="pane">
+              <Router history={history}>
+                <Home path="/" name="Home" />
+                <Home path="/memes" name="Memes" />
+              </Router>
+            </div>
+          </div>
+        </section>
+
+        <AppFooter />
       </div>
-    </section>
+    );
+  }
+}
 
-    <AppFooter />
-  </div>
-);
+export default App;

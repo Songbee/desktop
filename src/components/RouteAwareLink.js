@@ -5,13 +5,12 @@ import {h, Component} from "preact";
 class RouteAwareLink extends Component {
   constructor(props) {
     super(props);
-    this._history = window._history;  // XXX
     this.setState({active: false});
   }
 
   componentDidMount() {
-    this._history.listen(this.checkPath);
-    this.checkPath(this._history.location);
+    this.context.history.listen(this.checkPath);
+    this.checkPath(this.context.history.location);
   }
 
   checkPath = location => {
