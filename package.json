@@ -24,7 +24,8 @@
         {
           "pragma": "h"
         }
-      ]
+      ],
+      "transform-decorators-legacy"
     ]
   },
   "xo": {
@@ -74,6 +75,7 @@
     }
   },
   "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015-rollup": "^1.2.0",
     "babel-preset-es2016": "^6.16.0",
     "babel-preset-es2017": "^6.16.0",
@@ -93,10 +95,17 @@
     "xo": "^0.17.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "bencode": "^0.10.0",
+    "blob-to-buffer": "^1.2.6",
+    "decko": "^1.1.3",
     "history": "^4.4.0",
+    "listplayer": "^0.2.3",
     "photon": "connors/photon",
+    "pify": "^2.3.0",
     "preact": "^6.4.0",
     "preact-photon": "^1.3.0",
-    "preact-router": "^2.3.0"
+    "preact-router": "^2.3.0",
+    "webtorrent": "^0.97.2"
   }
 }

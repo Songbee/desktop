@@ -20,4 +20,9 @@ gulp.task("html", () => {
       .pipe(gulp.dest("./dist"));
 });
 
+gulp.task("sample-torrents", () => {
+  gulp.src("./src/torrents/*.torrent")
+      .pipe(gulp.dest("./dist/torrents"));
+});
+
 gulp.task("default", ["html", "js"]);

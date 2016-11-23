@@ -1,55 +1,39 @@
-import {h} from "preact";
+import fs from "fs";
+import path from "path";
+import {h, Component} from "preact";
 
-export default ({name}) => (
-  <div>
-    <h2>{name}</h2>
-    <table class="table-striped">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Artist</th>
-          <th>Time</th>
-          <th>Album</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Do I Wanna Know?</td>
-          <td>Arctic Monkeys</td>
-          <td>4:22</td>
-          <td>AM</td>
-        </tr>
-        <tr>
-          <td>Why'd You Only Call Me When...</td>
-          <td>Arctic Monkeys</td>
-          <td>2:41</td>
-          <td>AM</td>
-        </tr>
-        <tr>
-          <td>R U Mine?</td>
-          <td>Arctic Monkeys</td>
-          <td>3:22</td>
-          <td>AM</td>
-        </tr>
-        <tr>
-          <td>Arabella</td>
-          <td>Arctic Monkeys</td>
-          <td>3:27</td>
-          <td>AM</td>
-        </tr>
-        <tr>
-          <td>Do I Wanna Know?</td>
-          <td>Arctic Monkeys</td>
-          <td>4:22</td>
-          <td>AM</td>
-        </tr>
-        <tr>
-          <td>Do I Wanna Know?</td>
-          <td>Gorillaz</td>
-          <td>4:22</td>
-          <td>AM</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-);
+const SAMPLE_TORRENTS = [
+  "Eject.torrent",
+  "Immersion.torrent",
+].map((filename) => fs.readFileSync(path.join(__dirname, "./torrents", filename)));
+
+class Home extends Component {
+  handleAdd(i) {
+    this.context.addTorrent(SAMPLE_TORRENTS[i]);
+  }
+
+  render({ infoHash }) {
+    return (
+      <div style="margin: 5px;">
+        <h2>Welcome to Songbee.</h2>
+        <p>To get started, drag and drop a music torrent here or select something cool below:</p>
+        <p>
+          <button class="btn btn-large btn-primary"
+              onclick={() => this.handleAdd(1)}>
+            Pendulum — Immersion [aac]
+          </button>
+        </p>
+        <p>
+          <button class="btn btn-mini btn-default"
+              onclick={() => this.handleAdd(0)}>
+            Cazzette — Eject [flac]
+          </button>
+          {" — untested, should work on hi-speed connections"}
+          {/* Player doesn't work for some reason, mpv works fine */}
+        </p>
+      </div>
+    );
+  }
+}
+
+export default Home;

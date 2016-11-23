@@ -1,6 +1,7 @@
 /* eslint react/prop-types: [0] */
 
-import {h, Component} from "preact";
+import { h, Component } from "preact";
+import { bind } from "decko";
 
 class RouteAwareLink extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class RouteAwareLink extends Component {
     this.checkPath(this.context.history.location);
   }
 
-  checkPath = location => {
+  @bind
+  checkPath(location) {
     const url = `${location.pathname || ""}${location.search || ""}`;
     this.setState({
       active: url === this.props.href || location.pathname === this.props.href

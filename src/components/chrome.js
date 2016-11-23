@@ -50,4 +50,13 @@ const AppFooter = () => (
   </Footer>
 );
 
-export {AppHeader, AppSidebar, AppFooter};
+const Spinner = ({ active }) => (
+  <div class="spinner" style={active ? "" : "display: none;"}>
+    <div class="spinner-inner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </div>
+);
+
+export {AppHeader, AppSidebar, AppFooter, Spinner};
