@@ -4,7 +4,8 @@ Songbee will be a post-cloud music streaming app, similar
 to [Spotify][] or [Deezer][]. The key difference is: it's free and
 decentralized, powered by peer-to-peer networks like BitTorrent.
 
-**Status:** nothing works yet. We have an (un-)fancy UI, though.
+**Status:** streams music from some torrent files (AAC and MP3 seem to work
+but not FLAC).
 
 
 ### Why?
