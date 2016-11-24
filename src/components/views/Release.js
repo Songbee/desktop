@@ -37,6 +37,7 @@ class Release extends Component {
             ))}
           </tbody>
         </table>
+        <p style="opacity: .5;">Double-click any song to start playing!</p>
       </div>
     );
   }
