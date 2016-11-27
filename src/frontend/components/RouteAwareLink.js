@@ -2,6 +2,7 @@
 
 import { h, Component } from "preact";
 import { bind } from "decko";
+import { route } from "preact-router";
 
 class RouteAwareLink extends Component {
   constructor(props) {
@@ -26,8 +27,7 @@ class RouteAwareLink extends Component {
     return (
       <a
         className={`${props.class} ${className} ${this.state.active ? activeClass : ""}`}
-        href={href}
-        {...props}
+        onclick={() => route(href)} {...props}
         >{ children }</a>
     );
   }

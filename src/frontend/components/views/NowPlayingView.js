@@ -1,6 +1,6 @@
 import {h, Component} from "preact";
 
-class Release extends Component {
+class NowPlayingView extends Component {
   constructor(props) {
     super(props);
 
@@ -10,11 +10,9 @@ class Release extends Component {
   }
 
   render({ infoHash }) {
-    let release = this.context.backend.releases[infoHash];
-    window._release = release;
     return (
       <div>
-        <h2>{release.meta.title}</h2>
+        <h2>Now playing</h2>
         <table class="table-striped">
           <thead>
             <tr>
@@ -23,7 +21,7 @@ class Release extends Component {
             </tr>
           </thead>
           <tbody>
-            {release.tracks.map((track, i) => (
+            {this.context.backend.playlist.map((track, i) => (
               <tr key={i}
                   class={(this.state.activeRow == i) ? "active" : ""}
                   onclick={() => this.setState({
@@ -31,7 +29,7 @@ class Release extends Component {
                   })}
                   ondblclick={() => {
                     // this should start playing automatically
-                    this.context.backend.replacePlaylist(release.tracks, i);
+                    this.context.backend.switchTrack(i);
                   }}>
                 <td>{track.title}</td>
                 <td>{track.artists.join(", ")}</td>
@@ -45,4 +43,4 @@ class Release extends Component {
   }
 }
 
-export default Release;
+export default NowPlayingView;

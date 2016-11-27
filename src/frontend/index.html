@@ -122,5 +122,9 @@
 
   <script>
     require("./app.js");
+
+    fs = require("fs");
+    window.EJECT = fs.readFileSync("/home/ale/dev/songbee/songbee-desktop/src/torrents/Eject.torrent");
+    window.IMMERSION = fs.readFileSync("/home/ale/dev/songbee/songbee-desktop/src/torrents/Immersion.torrent");
   </script>
 </html>

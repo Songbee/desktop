@@ -7,13 +7,13 @@ import { bind } from "decko";
 import { AppHeader, AppSidebar, AppFooter, Spinner } from "./chrome";
 import Home from "./views/Home";
 import Release from "./views/Release";
-import TorrentManager from "../torrents";
+import NowPlayingView from "./views/NowPlayingView";
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.torrents = new TorrentManager();
+    this.backend = props.backend;
     this.setState({
       loading: false
     });
@@ -38,7 +38,7 @@ class App extends Component {
   @bind
   async addTorrent(buffer) {
     this.setState({ loading: true });
-    let torrent = await this.torrents.add(buffer);
+    let torrent = await this.backend.add(buffer);
     route(`/_torrent-release/${torrent.infoHash}`);
     this.setState({ loading: false });
   }
@@ -46,7 +46,8 @@ class App extends Component {
   getChildContext() {
     return {
       history: this.props.history,
-      torrents: this.torrents,
+      torrents: this.backend,
+      backend: this.backend,
       addTorrent: this.addTorrent,
     };
   }
@@ -65,6 +66,7 @@ class App extends Component {
               <Router history={history}>
                 <Home path="/" />
                 <Release path="/_torrent-release/:infoHash" />
+                <NowPlayingView path="/now-playing" />
               </Router>
               <Spinner active={this.state.loading} />
             </div>

@@ -2,18 +2,20 @@ import {h} from "preact";
 import {Header, Footer} from "preact-photon";
 import RouteAwareLink from "./RouteAwareLink";
 
-const AppHeader = () => (
+const AppHeader = ({}, { history }) => (
   <Header>
     <div class="toolbar-actions">
       <div class="btn-group">
-        <button class="btn btn-default">
+        <button class="btn btn-default"
+            onclick={() => history.goBack()}>
           <span class="icon icon-left-dir" />
         </button>
-        <button class="btn btn-default">
+        <button class="btn btn-default"
+            onclick={() => history.goForward()}>
           <span class="icon icon-right-dir" />
         </button>
       </div>
-      <input class="form-control toolbar-form-control" type="text" placeholder="Search" />
+      <input class="form-control toolbar-form-control" type="text" placeholder="No search today" />
     </div>
   </Header>
 );
@@ -25,13 +27,9 @@ const AppSidebar = () => (
       <span class="icon icon-home" />
       Home
     </RouteAwareLink>
-    <RouteAwareLink href="/memes" class="nav-group-item" activeClass="active">
+    <RouteAwareLink href="/now-playing" class="nav-group-item" activeClass="active">
       <span class="icon icon-download" />
-      Memes
-    </RouteAwareLink>
-    <RouteAwareLink href="/memes" class="nav-group-item" activeClass="active">
-      <span class="icon icon-download" />
-      Downloads
+      Now Playing
     </RouteAwareLink>
   </nav>
 );
