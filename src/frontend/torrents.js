@@ -1,8 +1,8 @@
 import url from "url";
 import bencode from "bencode";
 import parseTorrentFile from "parse-torrent-file";
-import WebTorrent from "./promisified/webtorrent";
-import MPV from "./promisified/mpv";
+import WebTorrent from "../promisified/webtorrent";
+import MPV from "../promisified/mpv";
 
 class TorrentManager {
   constructor() {

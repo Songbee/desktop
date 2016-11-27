@@ -1,7 +1,7 @@
 import { h, Component } from "preact";
 import { route, Router } from "preact-router";
 
-import blobToBuffer from "../promisified/blob-to-buffer";
+import blobToBuffer from "../../promisified/blob-to-buffer";
 import { bind } from "decko";
 
 import { AppHeader, AppSidebar, AppFooter, Spinner } from "./chrome";

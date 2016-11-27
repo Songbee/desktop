@@ -1,28 +1,19 @@
 const gulp = require("gulp");
-const rollup = require("gulp-rollup");
+const filter = require("gulp-filter");
+const babel = require("gulp-babel");
 const sourcemaps = require("gulp-sourcemaps");
-const babel = require("rollup-plugin-babel");
 
-gulp.task("js", () => {
-  gulp.src("./src/**/*.js")
-      .pipe(sourcemaps.init())
-        .pipe(rollup({
-          entry: ["src/app.js", "src/main.js"],
-          format: "cjs",
-          plugins: [babel()]
-        }))
-      .pipe(sourcemaps.write())
+gulp.task("build", () => {
+  const f = {
+    js: filter(['**/*.js'], { restore: true })
+  };
+  gulp.src("./src/**")
+      .pipe(f.js)
+        .pipe(sourcemaps.init())
+          .pipe(babel())
+        .pipe(sourcemaps.write())
+      .pipe(f.js.restore)
       .pipe(gulp.dest("./dist"));
 });
 
-gulp.task("html", () => {
-  gulp.src("./src/index.html")
-      .pipe(gulp.dest("./dist"));
-});
-
-gulp.task("sample-torrents", () => {
-  gulp.src("./src/torrents/*.torrent")
-      .pipe(gulp.dest("./dist/torrents"));
-});
-
-gulp.task("default", ["html", "js"]);
+gulp.task("default", ["build"]);

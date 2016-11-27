@@ -5,7 +5,7 @@ import {h, Component} from "preact";
 const SAMPLE_TORRENTS = [
   "Eject.torrent",
   "Immersion.torrent",
-].map((filename) => fs.readFileSync(path.join(__dirname, "./torrents", filename)));
+].map((filename) => fs.readFileSync(path.join(__dirname, "../../../torrents", filename)));
 
 class Home extends Component {
   handleAdd(i) {
