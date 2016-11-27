@@ -29,8 +29,8 @@ class Release extends Component {
                     activeRow: i,
                   })}
                   ondblclick={() => {
-                    this.context.torrents.player.index = i;
-                    this.context.torrents.player.play();
+                    // this should start playing automatically
+                    this.context.torrents.switchTrack(i);
                   }}>
                 <td>{file.name}</td>
               </tr>

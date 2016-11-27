@@ -2,49 +2,60 @@ import url from "url";
 import bencode from "bencode";
 import parseTorrentFile from "parse-torrent-file";
 import WebTorrent from "./promisified/webtorrent";
-import ListPlayer from "listplayer";
+import MPV from "./promisified/mpv";
 
 class TorrentManager {
   constructor() {
     this.webtorrent = new WebTorrent();
     this.torrents = {};
     this.server = null;
-    this.player = new ListPlayer({tracks: ["__HACK!__.mp3"]});
+    this.player = new MPV({ audio_only: true });
+    this._trackShift = 0;
     console.log("TorrentManager is ", this);
   }
 
   async add(torrent, serve=true) {
     let parsed = bencode.decode(torrent);
+    torrent = parseTorrentFile(parsed);
 
-    torrent = parseTorrentFile(torrent);
-    torrent = await this.webtorrent.add(torrent);
-    this.torrents[torrent.infoHash] = torrent;
-    this.serve(torrent);
+    if (!this.torrents.hasOwnProperty(torrent.infoHash)) {
+      torrent = await this.webtorrent.add(torrent);
+      this.torrents[torrent.infoHash] = torrent;
+    } else {
+      torrent = this.torrents[torrent.infoHash];
+    }
+
+    if (serve) {
+      this.serve(torrent);
+    }
+
     return torrent;
   }
 
-  serve(torrent) {
+  async serve(torrent) {
     if (this.server) {
       this.server.close();
     }
     this.server = torrent.createServer();
-    this.server.listen(8998);
+    this.server.listen(0); // random port
     let serverAddr = this.server.address();
 
-    this.player.pause();
-    this.player.seek(0);
-    this.player.tracks = torrent.files.map((file, i) => ({
-      title: file.name,
-      src: url.format({
+    this.player.clearPlaylist();
+    this._trackShift = await this.player.getProperty("playlist/count");
+    torrent.files.map((file, i) => {
+      this.player.append(url.format({
         protocol: "http",
         hostname: serverAddr.address,
         port: serverAddr.port,
         pathname: `/${i}`
-      }),
-    }));
-    this.player.index = 0;
+      }));
+    });
 
     return this.server;
+  }
+
+  switchTrack(i) {
+    this.player.setProperty("playlist-pos", i + this._trackShift);
   }
 }
 
