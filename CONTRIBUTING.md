@@ -1,10 +1,12 @@
-This project is [unlicensed](http://unlicense.org/). If you want to contribute,
-you have to [sign the Copyright wavier][CLA]. Fortunately, it's a matter
-of seconds as we use CLAHub: you'll just need to sign in with GitHub and
-fill in a few fields (email, name, type “I ARGEE”, and info about if your
-employer would be mad at you if you joined our little project).
+This project is [unlicensed][]. If you want to contribute,
+you have to sign the Copyright wavier. Fortunately, it's a matter of seconds
+as we use the [CLA assistant][] — it will provide instructions on your first
+pull request.
 
-Here's what you're signing:
+[unlicensed]: http://unlicense.org/
+[CLA assistant]: https://cla-assistant.io/
+
+Here's what you'll be signing:
 
 ---
 
@@ -26,9 +28,3 @@ To the best of my knowledge and belief, no individual, business,
 organization, government, or other entity has any copyright interest
 in my contributions, and I affirm that I will not make contributions
 that are otherwise encumbered.
-
----
-
-[Click here][CLA] to sign it on CLAHub.
-
-[CLA]: https://www.clahub.com/agreements/Songbee/desktop
