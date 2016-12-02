@@ -4,9 +4,18 @@ Songbee will be a post-cloud music streaming app, similar
 to [Spotify][] or [Deezer][]. The key difference is: it's free and
 decentralized, powered by peer-to-peer networks like BitTorrent.
 
-**Status:** streams music from some torrent files (AAC and MP3 seem to work
-but not FLAC).
+**Status:** streams music from torrent files (given there are enough seeds).
 
+## Install
+
+To run it from source:
+
+1. Install MPV globally (`brew install mpv` on macOS, [various repos][mpv-repos]
+   on Linux, but no idea about Windows)
+2. `git clone https://github.com/Songbee/desktop`
+3. `npm install && gulp && npm start`
+
+## FAQ-like section
 
 ### Why?
 
@@ -38,6 +47,7 @@ a Copyright wavier — see [CONTRIBUTING](CONTRIBUTING.md).
 
 [Spotify]: https://spotify.com/
 [Deezer]: https://deezer.com/
+[mpv-repos]: https://mpv.io/installation/
 [Flattr]: https://flattr.com/
 [sabufaizu]: https://soundcloud.com/sabufaizu
 [Popcorn Time]: https://popcorntime.sh/
