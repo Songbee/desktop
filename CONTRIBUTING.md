@@ -22,12 +22,16 @@ If you are opening an issue about a bug, make sure that you include clear steps 
 
 ## Filing Pull Requests
 
-For now there isn't much routine for you to do. Sometime we'll have tests, docs, [a changelog][] and lots of other fancy neat stuff. For now there are just a few things to keep in mind:
+For now there isn't much routine for you to do. Sometime we'll have tests, docs, [a changelog][] and lots of other fancy neat stuff. There are just a few things to keep in mind:
 
 - **Coding style:** tl;dr: double quotes and semicolons. _“In lieu of a formal style guide, take care to maintain the existing coding style.”_
 - **License:** (see below)
+- **#nowplaying:** 🎶 = ❤! If you want, you can include your currently playing track as a part of a commit message; [example][np-commit]:
+
+![](https://cloud.githubusercontent.com/assets/1298948/20859997/6efccb90-b987-11e6-884f-f9881be709b7.png)
 
 [a changelog]: http://keepachangelog.com/
+[np-commit]: https://github.com/Songbee/desktop/commit/f3a6c87f320f8c583cc51454fbb599fae0c69f37
 
 ### License
 
