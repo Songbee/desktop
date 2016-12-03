@@ -13,7 +13,7 @@ To run it from source:
 1. Install MPV globally (`brew install mpv` on macOS, [various repos][mpv-repos]
    on Linux, but no idea about Windows)
 2. `git clone https://github.com/Songbee/desktop`
-3. `npm install && gulp && npm start`
+3. `npm install && gulp && npm start` (I said npm? Of course I meant [yarn][]!)
 
 ## FAQ-like section
 
@@ -48,6 +48,7 @@ a Copyright wavier — see [CONTRIBUTING](CONTRIBUTING.md).
 [Spotify]: https://spotify.com/
 [Deezer]: https://deezer.com/
 [mpv-repos]: https://mpv.io/installation/
+[yarn]: https://yarnpkg.com/
 [Flattr]: https://flattr.com/
 [sabufaizu]: https://soundcloud.com/sabufaizu
 [Popcorn Time]: https://popcorntime.sh/
