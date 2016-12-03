@@ -39,7 +39,9 @@ class Release {
           if (!release.server) release.serve();
           return url.format({
             protocol: "http",
-            hostname: release.address.address,
+            // hostname is always [::], but on Windows this
+            // doesn't work so we have what we have:
+            hostname: "localhost",
             port: release.address.port,
             pathname: `/${fileNum}`
           });
@@ -66,12 +68,21 @@ class Release {
 }
 
 
+const WINDOWS_SOCKET = String.raw`\\.\pipe\songbeempv`;
+
+
 class Manager {
-  constructor() {
+  constructor(debug=false) {
+    let isWin = /^win/.test(process.platform);
+
     this.playlist = [];
 
     this.webtorrent = new WebTorrent();
-    this.player = new MPV({ audio_only: true });
+    this.player = new MPV({
+      audio_only: !debug,
+      socket: isWin ? WINDOWS_SOCKET : "/tmp/songbeempv.sock",
+      debug: debug,
+    });
 
     this.releases = {};
     this._trackShift = 0;
