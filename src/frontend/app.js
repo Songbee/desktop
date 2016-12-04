@@ -1,10 +1,11 @@
-import {h, render} from "preact";
+import { h, render } from "preact";
+import { remote } from "electron";
+
 import App from "./components/App";
 import createHistory from "history/createMemoryHistory";
-import BackendManager from "../backend";
 
 const history = createHistory();
-const backend = new BackendManager();
+const backend = remote.getGlobal("backend");
 window._history = history;
 window._backend = backend;
 

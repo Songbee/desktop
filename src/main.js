@@ -1,11 +1,21 @@
-import electron from "electron";
+import electron, { app, BrowserWindow } from "electron";
 import path from "path";
 import url from "url";
 
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+import Manager from "./backend";
+global.backend = new Manager();
 
 let mainWindow; // keep a reference
+
+const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
+  // Someone tried to run a second instance, we should focus our window.
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
+  }
+});
+
+if (shouldQuit) app.quit();
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -21,7 +31,7 @@ function createWindow() {
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, "frontend/index.html"),
     protocol: "file:",
-    slashes: true
+    slashes: true,
   }));
 
   mainWindow.on("closed", () => {
@@ -44,4 +54,8 @@ app.on("activate", () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow();
+});
+
+app.on("will-quit", () => {
+  global.backend.quit();
 });

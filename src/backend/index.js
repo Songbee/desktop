@@ -86,7 +86,6 @@ class Manager {
 
     this.releases = {};
     this._trackShift = 0;
-    console.log("Manager is ", this);
   }
 
   async add(torrent) {
@@ -132,6 +131,10 @@ class Manager {
     }
 
     this.player.setProperty("playlist-pos", track + this._trackShift);
+  }
+
+  quit() {
+    this.player.freeCommand('{"command": ["quit", 0]}');
   }
 }
 
