@@ -1,4 +1,12 @@
-# Songbee
+<h1 align="center" style="border-bottom: none;">
+  <img src="https://gitcdn.xyz/repo/Songbee/assets/master/songbee-app.svg" alt="logo" width="200">
+  <br>
+  Songbee
+</h1>
+
+<h4 align="center">Post-cloud music streaming</h4>
+
+---
 
 Songbee will be a post-cloud music streaming app, similar
 to [Spotify][] or [Deezer][]. The key difference is: it's free and
