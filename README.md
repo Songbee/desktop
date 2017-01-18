@@ -21,7 +21,7 @@ To run it from source:
 1. Install MPV globally (`brew install mpv` on macOS, [various repos][mpv-repos]
    on Linux, but no idea about Windows)
 2. `git clone https://github.com/Songbee/desktop`
-3. `npm install && gulp && npm start` (I said npm? Of course I meant [yarn][]!)
+3. `npm install && gulp && npm run build && npm start` (I said npm? Of course I meant [yarn][]!)
 
 ## FAQ-like section
 
