@@ -39,10 +39,11 @@ Yeah, well, look at the [Popcorn Time][].
 
 ### Okay, copyright fighter, so what's the license?
 
-[Unlicense][]. I wanted to use MIT, but it doesn't really make sense.
+Initially we used [Unlicense][]. However, as we make use of [mpv][] to play
+the music (and want to bundle it), we've switched to GPLv3 in order
+to be compatible with its license (GPLv2 or later).
 
-If you want to contribute to this project, you'll have to sign
-a Copyright wavier — see [CONTRIBUTING](CONTRIBUTING.md).
+See [LICENSE](./LICENSE).
 
 
 [Spotify]: https://spotify.com/
@@ -53,3 +54,4 @@ a Copyright wavier — see [CONTRIBUTING](CONTRIBUTING.md).
 [sabufaizu]: https://soundcloud.com/sabufaizu
 [Popcorn Time]: https://popcorntime.sh/
 [Unlicense]: http://unlicense.org/
+[mpv]: https://github.com/mpv-player/mpv
