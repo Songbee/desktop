@@ -1,7 +1,10 @@
 import url from "url";
+import path from "path";
+
 import bencode from "bencode";
 import isEqual from "lodash.isequal";
 import parseTorrentFile from "parse-torrent-file";
+import envPaths from "env-paths";
 import WebTorrent from "../promisified/webtorrent";
 import MPV from "../promisified/mpv";
 
@@ -17,7 +20,7 @@ class Release {
       tracks: meta.tracks || torrent.files.map((file) => ({
         title: file.name,
         artists: [],
-        filename: file.path
+        filename: file.path,
       })),
     };
 
@@ -43,7 +46,7 @@ class Release {
             // doesn't work so we have what we have:
             hostname: "localhost",
             port: release.address.port,
-            pathname: `/${fileNum}`
+            pathname: `/${fileNum}`,
           });
         },
         serve() {
@@ -75,6 +78,11 @@ class Manager {
   constructor(debug=false) {
     let isWin = /^win/.test(process.platform);
 
+    let paths = this.paths = { base: envPaths("Songbee", { suffix: "" }) };
+    Object.assign(this.paths, {
+      downloads: path.join(paths.base.cache, "downloads"),
+    });
+
     this.playlist = [];
 
     this.webtorrent = new WebTorrent();
@@ -96,7 +104,9 @@ class Manager {
       return this.releases[torrent.infoHash];
     }
 
-    torrent = await this.webtorrent.add(torrent);
+    torrent = await this.webtorrent.add(torrent, {
+      path: path.join(this.paths.downloads, torrent.infoHash),
+    });
     let release = new Release(torrent);
     this.releases[torrent.infoHash] = release;
 
