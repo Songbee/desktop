@@ -1,0 +1,15 @@
+plugins: [unicorn]
+extends: [xo-space/esnext, xo-react/space, "plugin:unicorn/recommended"]
+
+rules:
+  curly: [2, multi]
+  quotes: [1, double, {
+    avoidEscape: true,
+    allowTemplateLiterals: true
+  }]
+  no-multiple-empty-lines: [2, { max: 2, maxEOF: 1 }]
+  object-curly-spacing: [2, always]
+  react/jsx-space-before-closing: [1, always]
+  react/no-unknown-property: [2, { ignore: [class] }]
+  import/no-named-as-default: [0]
+  unicorn/filename-case: [0]

@@ -1,0 +1,9 @@
+{
+  "presets": ["es2015", "es2016", "es2017", "stage-0", "react"],
+  "plugins": [
+    ["transform-react-jsx", { "pragma": "h" }],
+    "transform-decorators-legacy",
+    "transform-es2015-modules-commonjs",
+    "transform-runtime"
+  ]
+}
