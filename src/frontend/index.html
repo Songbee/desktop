@@ -42,7 +42,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        
+
         -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
         animation: sk-bounce 2.0s infinite ease-in-out;
       }
@@ -72,50 +72,6 @@
         background-color: rgb(233, 110, 80);
       }
     </style>
-    <script type="text/javascript">
-      function viewComponentTree(node) {
-        let doc = new DOMParser().parseFromString('', 'application/xml');
-        function visitor(dom) {
-          let el, c;
-          if (dom instanceof Node) {
-            el = dom.cloneNode();
-            for (let i=0; i<dom.childNodes.length; i++) {
-              let c = dom.childNodes[i];
-              el.appendChild(visitor(c._component || c));
-            }
-          }
-          else {
-            el = doc.createElement(getName(dom.constructor));
-            for (let i in dom.props) if (i!=='children' && dom.props[i]!==undefined) {
-              el.setAttribute(i, stringify(dom.props[i]));
-            }
-            el.appendChild(visitor(dom._component || dom.base));
-          }
-          return el;
-        }
-        function getName(component) {
-          return component.displayName || component.name || 'UnnamedComponent';
-        }
-        function stringify(value) {
-          if (value && typeof value==='object') {
-            if (value.join) return '[ '+value.map(stringify).join(', ')+' ]';
-            if ('nodeName' in value && 'attributes' in value && 'children' in value) {
-              return '<'+(typeof value.nodeName==='function'?getName(value.nodeName):value.nodeName)+' '+Object.keys(value.attributes||{}).map(k=>k+'="'+stringify(value.attributes[k])+'"')+' />';
-            }
-            let r = '{';
-            for (let i in value) {
-              r += (r[1]?', ':' ') + (typeof value[i]==='function'?'':(i+': ')) + stringify(value[i]);
-            }
-            value = (r.length>60?(r.substring(0,58)+'…'):r) + ' }';
-          }
-          if (typeof value==='function') value = (value.name || 'fn')+'()';
-          return String(value);
-        }
-        doc.removeChild(doc.firstChild);
-        doc.appendChild(visitor(node));
-        return doc.firstChild;
-      }
-    </script>
   </head>
   <body></body>
 
