@@ -45,7 +45,7 @@ app.on("ready", () => {
   const trayMenu = Menu.buildFromTemplate([
     { role: 'quit' },
   ]);
-  tray.setToolTip("~Songbee!!!!!!!");
+  tray.setToolTip("Songbee");
   tray.setContextMenu(trayMenu);
 
   createWindow();
