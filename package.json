@@ -29,6 +29,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-filter": "^4.0.0",
     "gulp-sourcemaps": "^2.2.0"
+    "gulp-yarn": "^0.1.0",
   },
   "dependencies": {
     "babel-runtime": "^6.18.0",
