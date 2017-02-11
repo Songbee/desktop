@@ -19,6 +19,7 @@
     "babel-preset-es2017": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "del": "^2.2.2",
     "devtron": "^1.4.0",
     "electron": "^1.4.1",
     "electron-packager": "^8.3.0",
