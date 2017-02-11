@@ -3,6 +3,7 @@ const filter = require("gulp-filter");
 const babel = require("gulp-babel");
 const sourcemaps = require("gulp-sourcemaps");
 const yarn = require("gulp-yarn");
+const asar = require("gulp-asar");
 const del = require("del");
 
 gulp.task("build", () => {
@@ -27,4 +28,10 @@ gulp.task("vendor", function() {
 
 gulp.task("clean", function() {
     return del(["./build"]);
+});
+
+gulp.task("package", function() {
+  return gulp.src("dist/**/*")
+    .pipe(asar("songbee.asar"))
+    .pipe(gulp.dest("./build"));
 });
