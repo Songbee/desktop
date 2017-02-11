@@ -5,10 +5,11 @@ const sourcemaps = require("gulp-sourcemaps");
 const yarn = require("gulp-yarn");
 const asar = require("gulp-asar");
 const del = require("del");
+const runSequence = require("run-sequence");
 
-gulp.task("build", () => {
+gulp.task("dist", () => {
   const f = {
-    js: filter(['**/*.js'], { restore: true })
+    js: filter(["**/*.js"], { restore: true })
   };
   return gulp.src("./src/**")
     .pipe(f.js)
@@ -19,7 +20,6 @@ gulp.task("build", () => {
     .pipe(gulp.dest("./dist"));
 });
 
-gulp.task("default", ["build"]);
 gulp.task("vendor", function() {
   return gulp.src(["./package.json", "./yarn.lock"])
     .pipe(gulp.dest("./dist"))
@@ -35,3 +35,18 @@ gulp.task("package", function() {
     .pipe(asar("songbee.asar"))
     .pipe(gulp.dest("./build"));
 });
+
+gulp.task("build:dev", cb => { runSequence(
+  "clean",
+  ["dist", "vendor"],
+  cb
+)});
+
+gulp.task("build:prod", cb => { runSequence(
+  "clean",
+  ["dist", "vendor"],
+  "package",
+  cb
+)});
+
+gulp.task("default", ["build:dev"]);
