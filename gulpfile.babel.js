@@ -7,13 +7,13 @@ gulp.task("build", () => {
   const f = {
     js: filter(['**/*.js'], { restore: true })
   };
-  gulp.src("./src/**")
-      .pipe(f.js)
-        .pipe(sourcemaps.init())
-          .pipe(babel())
-        .pipe(sourcemaps.write())
-      .pipe(f.js.restore)
-      .pipe(gulp.dest("./dist"));
+  return gulp.src("./src/**")
+    .pipe(f.js)
+      .pipe(sourcemaps.init())
+        .pipe(babel())
+      .pipe(sourcemaps.write())
+    .pipe(f.js.restore)
+    .pipe(gulp.dest("./dist"));
 });
 
 gulp.task("default", ["build"]);
