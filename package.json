@@ -3,11 +3,13 @@
   "productName": "Songbee Preview",
   "version": "0.1.0",
   "description": "A minimal Electron application",
-  "main": "dist/main.js",
+  "main": "./main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron dist/",
+    "start:prod": "electron build/songbee.asar",
     "inspect": "electron-inspector",
-    "build": "gulp"
+    "build": "gulp",
+    "build:prod": "gulp build:prod"
   },
   "repository": "https://github.com/Songbee/desktop",
   "author": "The Songbee Team",
@@ -19,6 +21,7 @@
     "babel-preset-es2017": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "del": "^2.2.2",
     "devtron": "^1.4.0",
     "electron": "^1.4.1",
     "electron-packager": "^8.3.0",
@@ -26,9 +29,12 @@
     "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-react": "^6.8.0",
     "gulp": "^3.9.1",
+    "gulp-asar": "iamale/gulp-asar",
     "gulp-babel": "^6.1.2",
     "gulp-filter": "^4.0.0",
-    "gulp-sourcemaps": "^2.2.0"
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-yarn": "^0.1.0",
+    "run-sequence": "^1.2.2"
   },
   "dependencies": {
     "babel-runtime": "^6.18.0",
