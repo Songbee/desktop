@@ -1,9 +1,10 @@
 {
-  "presets": ["es2017", "stage-0", "react"],
+  "presets": ["react"],
   "plugins": [
+    "transform-object-rest-spread",
+    "async-to-promises",
     ["transform-react-jsx", { "pragma": "h" }],
     "transform-decorators-legacy",
-    "transform-es2015-modules-commonjs",
-    "transform-runtime"
+    "transform-es2015-modules-commonjs"
   ]
 }
