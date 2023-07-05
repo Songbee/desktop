@@ -1,5 +1,5 @@
 <h1 align="center" style="border-bottom: none;">
-  <img src="https://gitcdn.xyz/repo/Songbee/assets/master/songbee-app.svg" alt="logo" width="200">
+  <img src="https://raw.githubusercontent.com/Songbee/assets/2b62b6873f057c156af67f837f101f5997f47907/songbee-app.svg" alt="logo" width="200">
   <br>
   Songbee
 </h1>
